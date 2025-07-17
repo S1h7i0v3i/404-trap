@@ -45,24 +45,20 @@ Dashboard (with Basic Auth) displays:
 
 - Option to download logs as CSV
 
-🌐 Live Demo
+# 🌐 Live Demo
 
 🚀 Deployed on Render
 
-🔗 Honeypot: https://https://four04-trap.onrender.com/admin
+🔗 Honeypot: https://four04-trap.onrender.com/admin
 
-🔗 Dashboard: https://https://four04-trap.onrender.com/dashboard (Basic Auth Required)
+🔗 Dashboard: https://four04-trap.onrender.com/dashboard (Basic Auth Required)
 
 
 
-✅ Run Locally
-bash
-Copy
-Edit
 # Clone the repository
 git clone https://github.com/S1h7i0v3i/404-trap.git
 
-cd 404-trap
+cd  404-trap
 
 # Install dependencies
 pip install -r requirements.txt

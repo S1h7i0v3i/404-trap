@@ -1,0 +1,5 @@
+Timestamp,IP,Location,Path,User-Agent
+2025-07-17 12:11:42,127.0.0.1,Local Network,/admin,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0"
+2025-07-17 12:14:37,192.168.29.100,Local Network,/config,"Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Mobile Safari/537.36"
+2025-07-17 12:15:21,192.168.29.100,Local Network,/admin,"Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Mobile Safari/537.36"
+2025-07-17 12:15:28,192.168.29.100,Local Network,/php,"Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Mobile Safari/537.36"

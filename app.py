@@ -2,17 +2,23 @@ from flask import Flask
 from routes.traps import traps_bp
 from routes.dashboard import dashboard_bp
 from dotenv import load_dotenv
+from werkzeug.middleware.proxy_fix import ProxyFix
 import os
 
-# Load .env if exists
+# Load .env if exists (for local development)
 load_dotenv()
 
 app = Flask(__name__, template_folder="templates", static_folder="static")
+
+# Fix for Render / Gunicorn reverse proxy
+app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1)
+
+# Home Route
 @app.route("/")
 def home():
-    return "<h2>Welcome to my Server </h2>"
+    return "<h2>Welcome to 404 Trap Honeypot!</h2>"
 
-# Register routes
+# Register Blueprints
 app.register_blueprint(traps_bp)
 app.register_blueprint(dashboard_bp)
 

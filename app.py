@@ -18,5 +18,4 @@ app.register_blueprint(dashboard_bp)
 
 if __name__ == "__main__":
     port = int(os.getenv("PORT", 5000))
-    print("Loaded DASHBOARD_USER:", os.getenv("DASHBOARD_USER"))
     app.run(host="0.0.0.0", port=port, debug=True)

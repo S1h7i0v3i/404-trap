@@ -1,7 +1,7 @@
-404 Trap – Low Interaction Honeypot
+# 404 Trap – Low Interaction Honeypot
 A low-interaction honeypot that mimics sensitive endpoints, detects malicious activity, and provides a real-time dashboard for monitoring. Designed for cybersecurity research and awareness.
 
-✨ Features
+# ✨ Features
 ✔ Fake admin panel (/admin) with credential capture
 ✔ Common trap endpoints (/phpmyadmin, /config, /backup, etc.)
 ✔ Attack detection: SQL Injection, XSS, Command Injection, Credential Harvesting
@@ -16,7 +16,7 @@ Download logs as CSV
 ✔ Basic Authentication for secure dashboard access
 ✔ Daily log rotation (honeypot_YYYY-MM-DD.log)
 
-🚀 How It Works
+# 🚀 How It Works
 Honeypot listens for HTTP requests on fake endpoints like /admin, /config, /phpmyadmin.
 
 Captures:
@@ -62,7 +62,7 @@ Honeypot fake admin: http://localhost:5000/admin
 
 Dashboard: http://localhost:5000/dashboard (Basic Auth required)
 
-📈 Future Enhancements
+# 📈 Future Enhancements
 ✔ Fake SQLi responses for realism
 ✔ Threat Intelligence integration (AbuseIPDB, VirusTotal)
 ✔ Email/Slack alerts for high-risk IPs

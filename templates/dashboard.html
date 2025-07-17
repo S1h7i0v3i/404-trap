@@ -10,39 +10,36 @@
 </head>
 <body class="light-mode">
   <div class="container py-4">
-    <!-- Header -->
     <div class="d-flex justify-content-between align-items-center mb-3">
       <h1>404 Trap Dashboard</h1>
       <button class="btn btn-dark" onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
     </div>
 
-    <!-- Controls -->
-    <div class="d-flex flex-wrap gap-3 mb-4">
+    <div class="d-flex gap-3 mb-4">
       <select id="dateSelect" class="form-select w-auto"></select>
       <button class="btn btn-primary" onclick="fetchLogs()">🔄 Refresh Logs</button>
       <button class="btn btn-success" onclick="downloadCSV()">⬇ Download CSV</button>
     </div>
 
-    <!-- Summary Cards -->
     <div class="row mb-4">
-      <div class="col-md-4 mb-3">
-        <div class="card text-center shadow">
+      <div class="col-md-4">
+        <div class="card text-center">
           <div class="card-body">
             <h5>Total Hits</h5>
             <h3 id="totalHits">0</h3>
           </div>
         </div>
       </div>
-      <div class="col-md-4 mb-3">
-        <div class="card text-center shadow">
+      <div class="col-md-4">
+        <div class="card text-center">
           <div class="card-body">
             <h5>Unique IPs</h5>
             <h3 id="uniqueIPs">0</h3>
           </div>
         </div>
       </div>
-      <div class="col-md-4 mb-3">
-        <div class="card text-center shadow">
+      <div class="col-md-4">
+        <div class="card text-center">
           <div class="card-body">
             <h5>Top Path</h5>
             <h3 id="topPath">-</h3>
@@ -51,28 +48,23 @@
       </div>
     </div>
 
-    <!-- Chart -->
-    <div class="mb-4 card shadow p-3">
-      <canvas id="ipChart" height="100"></canvas>
-    </div>
+    <canvas id="ipChart" height="100" class="mb-4"></canvas>
 
-    <!-- Logs Table -->
-    <div class="table-wrapper card shadow p-3">
-      <table class="table table-bordered table-striped mb-0">
-        <thead class="table-dark">
-          <tr>
-            <th>Time</th>
-            <th>IP</th>
-            <th>Location</th> <!-- ✅ Added Location -->
-            <th>Path</th>
-            <th>User-Agent</th>
-          </tr>
-        </thead>
-        <tbody id="logTable"></tbody>
-      </table>
-    </div>
+    <table class="table table-bordered table-striped">
+      <thead class="table-dark">
+  <tr>
+     <th>Time</th>
+     <th>IP</th>
+     <th>Location</th>
+     <th>Attack</th>
+     <th>Credentials</th>
+     <th>User-Agent</th>
+  </tr>
+</thead>
+<tbody id="logTable"></tbody>
+
+    </table>
   </div>
-
   <script src="/static/js/dashboard.js"></script>
 </body>
 </html>

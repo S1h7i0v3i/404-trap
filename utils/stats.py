@@ -1,25 +1,30 @@
-from collections import Counter
-
 def calculate_stats(logs):
-    if not logs:
-        return {"total_hits": 0, "unique_ips": 0, "top_path": None, "top_ips": []}
+    total_hits = len(logs)
+    ips, paths, attacks = [], [], {}
 
-    ips = []
-    paths = []
-    for log in logs:
-        parts = log.split(" - ")
-        if len(parts) >= 5:
-            ip = parts[1].replace("IP: ", "")
-            path = parts[3].replace("Path: ", "")
-            ips.append(ip)
-            paths.append(path)
+    for line in logs:
+        parts = line.split(" - ")
+        if len(parts) < 6:
+            continue
+        ip = parts[1].replace("IP: ", "")
+        attack = parts[2].replace("Attack: ", "")
+        path = parts[3].replace("Path: ", "")
+        ips.append(ip)
+        paths.append(path)
+        attacks[attack] = attacks.get(attack, 0) + 1
 
-    top_path = Counter(paths).most_common(1)[0][0] if paths else None
-    top_ips = Counter(ips).most_common(5)
+    unique_ips = len(set(ips))
+    top_path = max(set(paths), key=paths.count) if paths else None
+
+    ip_freq = {}
+    for ip in ips:
+        ip_freq[ip] = ip_freq.get(ip, 0) + 1
+    top_ips = sorted(ip_freq.items(), key=lambda x: x[1], reverse=True)[:5]
 
     return {
-        "total_hits": len(logs),
-        "unique_ips": len(set(ips)),
+        "total_hits": total_hits,
+        "unique_ips": unique_ips,
         "top_path": top_path,
-        "top_ips": top_ips
+        "top_ips": top_ips,
+        "attack_summary": attacks
     }

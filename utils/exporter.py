@@ -1,19 +1,19 @@
+import os
 import csv
-from utils.logger import parse_logs
+from .logger import parse_logs
 
-def export_csv(date):
+EXPORT_DIR = "logs"
+
+def export_logs_as_csv(date):
     logs = parse_logs(date)
-    csv_path = f"honeypot_{date}.csv"
-    with open(csv_path, "w", newline="") as csvfile:
-        writer = csv.writer(csvfile)
-        writer.writerow(["Timestamp", "IP", "Location", "Path", "User-Agent"])
+    file_path = os.path.join(EXPORT_DIR, f"export_{date}.csv")
+    with open(file_path, "w", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerow(["Timestamp", "IP", "Attack", "Path", "Credentials", "User-Agent"])
         for line in logs:
             parts = line.split(" - ")
-            if len(parts) >= 5:
-                timestamp = parts[0]
-                ip = parts[1].replace("IP: ", "")
-                location = parts[2].replace("Location: ", "")
-                path = parts[3].replace("Path: ", "")
-                ua = parts[4].replace("UA: ", "")
-                writer.writerow([timestamp, ip, location, path, ua])
-    return csv_path
+            creds = ""
+            if "Captured Credentials:" in line:
+                creds = [p for p in parts if "Captured Credentials:" in p][0].replace("Captured Credentials: ", "")
+            writer.writerow([parts[0], parts[1], parts[2], parts[3], creds, parts[-1]])
+    return file_path

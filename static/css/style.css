@@ -1,18 +1,11 @@
 body.light-mode {
-  background-color: #f8f9fa;
+  background: #f8f9fa;
   color: #212529;
 }
-
 body.dark-mode {
-  background-color: #121212;
+  background: #121212;
   color: #f8f9fa;
 }
-
-.card {
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-
 .table-wrapper {
   max-height: 400px;
   overflow-y: auto;

@@ -42,11 +42,7 @@ function updateChart(topIps) {
     type: 'bar',
     data: {
       labels,
-      datasets: [{
-        label: 'Top Attacker IPs',
-        data,
-        backgroundColor: '#007bff'
-      }]
+      datasets: [{ label: 'Top Attacker IPs', data, backgroundColor: '#007bff' }]
     },
     options: { responsive: true }
   });
@@ -56,14 +52,15 @@ function populateTable(logs) {
   const tbody = document.getElementById('logTable');
   tbody.innerHTML = '';
   logs.forEach(line => {
-    const match = line.match(/(\d+-\d+-\d+ \d+:\d+:\d+) - IP: ([^\s]+) - Location: ([^-]+) - Path: ([^\s]+) - UA: (.+)/);
+    const match = line.match(/(\d+-\d+-\d+ \d+:\d+:\d+) - IP: ([^\s]+) - Location: ([^-]+) - Attack: ([^-]+) - Path: ([^\s]+)(?: - Captured Credentials: ([^-]+))? - UA: (.+)/);
     if (!match) return;
-    const [, time, ip, location, path, ua] = match;
+    const [, time, ip, location, attack, path, creds = 'None', ua] = match;
     const row = `<tr>
       <td>${time}</td>
       <td>${ip}</td>
       <td>${location}</td>
-      <td>${path}</td>
+      <td><span class="badge ${attack.trim() === 'Normal' ? 'bg-secondary' : 'bg-danger'}">${attack}</span></td>
+      <td>${creds}</td>
       <td>${ua}</td>
     </tr>`;
     tbody.insertAdjacentHTML('beforeend', row);
@@ -81,7 +78,6 @@ async function downloadCSV() {
   window.location.href = `/api/export-logs?date=${date}`;
 }
 
-// Initialize
 (async () => {
   await fetchDates();
   await fetchLogs();

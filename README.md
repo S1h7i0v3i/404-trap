@@ -12,11 +12,11 @@ A low-interaction honeypot that mimics sensitive endpoints, detects malicious ac
 
 ✔ Real-time dashboard with:
 
-Attack stats (Total hits, Unique IPs, Top Paths)
+- Attack stats (Total hits, Unique IPs, Top Paths)
 
-Logs table with IP, Location, Attack type, Credentials
+- Logs table with IP, Location, Attack type, Credentials
 
-Download logs as CSV
+- Download logs as CSV
 
 ✔ Basic Authentication for secure dashboard access
 

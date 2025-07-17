@@ -8,6 +8,9 @@ import os
 load_dotenv()
 
 app = Flask(__name__, template_folder="templates", static_folder="static")
+@app.route("/")
+def home():
+    return "<h2>Welcome to my Server </h2>"
 
 # Register routes
 app.register_blueprint(traps_bp)

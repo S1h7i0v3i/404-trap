@@ -21,23 +21,23 @@ Honeypot listens for HTTP requests on fake endpoints like /admin, /config, /phpm
 
 Captures:
 
-IP & GeoIP
+- IP & GeoIP
 
-User-Agent
+- User-Agent
 
-Attack type (SQLi, XSS, Command Injection, etc.)
+- Attack type (SQLi, XSS, Command Injection, etc.)
 
-Captured credentials
+- Captured credentials
 
-Logs data into logs/honeypot_YYYY-MM-DD.log.
+- Logs data into logs/honeypot_YYYY-MM-DD.log.
 
 Dashboard (with Basic Auth) displays:
 
-Summary statistics
+- Summary statistics
 
-Attack logs in real-time
+- Attack logs in real-time
 
-Option to download logs as CSV
+- Option to download logs as CSV
 
 ✅ Run Locally
 bash
